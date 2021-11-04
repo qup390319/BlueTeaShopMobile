@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueTeaShopMobile">
         <activity
+            android:name=".OrderPageLimited"
+            android:exported="false" />
+        <activity
+            android:name=".OrderPageMilk"
+            android:exported="false" />
+        <activity
+            android:name=".OrderPageJuice"
+            android:exported="false" />
+        <activity
+            android:name=".OrderPageTea"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
