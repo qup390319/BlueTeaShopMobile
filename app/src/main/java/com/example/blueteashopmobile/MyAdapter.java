@@ -12,6 +12,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     MyAdapter(List<String>data){
         mData=data;
     }
+
     class ViewHolder extends RecyclerView.ViewHolder{
         private TextView txt1;
         public ViewHolder(View itemView){
