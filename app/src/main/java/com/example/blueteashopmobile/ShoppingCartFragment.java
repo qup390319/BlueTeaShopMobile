@@ -3,10 +3,14 @@ package com.example.blueteashopmobile;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +18,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ShoppingCartFragment extends Fragment {
-
+    private RecyclerView rcv;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private MyAdapter adapter;
+    private ArrayList<String> mData=new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +66,14 @@ public class ShoppingCartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        rcv=root.findViewById(R.id.rcv);
+        rcv.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(root.getContext());
+        rcv.setLayoutManager(mLayoutManager);
+        adapter=new MyAdapter(mData);
+        rcv.setAdapter(adapter);
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
     }
 }
+
