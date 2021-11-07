@@ -6,7 +6,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-
+class Data{
+    int ticket_id;
+    String items;
+    Integer total;
+    public Data(int i,String txt1,String sug,String ice,Integer money){
+        ticket_id=i;
+        items=txt1+sug+ice;
+        total=money;
+    }
+}
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<String>mData;
     MyAdapter(List<String>data){
