@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -29,6 +31,10 @@ import okhttp3.Response;
  */
 public class OrderFragment extends Fragment {
 
+    private RecyclerView Order_rcv;
+    private OrderAdapter orderAdapter;
+    private ArrayList<String> OrderData = new ArrayList<>();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,6 +43,7 @@ public class OrderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public OrderFragment() {
         // Required empty public constructor
@@ -82,6 +89,12 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         String url = "https://a66a-2001-b011-b800-9666-a5b6-e17-6e1-3f0c.ngrok.io/api/teas";
         OkHttpClient client = new OkHttpClient().newBuilder().build();
+        View root = inflater.inflate(R.layout.fragment_order,container,false);
+        Order_rcv = root.findViewById(R.id.Order_rcv);
+
+
+
+
         Request request = new Request.Builder().url(url).build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
@@ -96,6 +109,7 @@ public class OrderFragment extends Fragment {
                 Log.d("tickets",result);
                 List<Data> list = new Gson().fromJson(result, new TypeToken<List<Data>>() {
                 }.getType());
+
             }
         });
         return inflater.inflate(R.layout.fragment_order, container, false);

@@ -6,10 +6,18 @@
     tools:context=".OrderFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Order"
-        android:textSize="30pt"/>
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Order_rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </FrameLayout>
