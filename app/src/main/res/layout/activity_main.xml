@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,80 +7,17 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="fill_parent"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_frg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/nav_btm" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-            <Button
-                android:id="@+id/btnTea"
-                android:layout_width="335dp"
-                android:layout_height="105dp"
-                android:text="茶飲"
-                android:textSize="34sp"
-                android:layout_gravity="center_horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.603"
-                app:strokeColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/btnMilk"
-                android:layout_width="335dp"
-                android:layout_height="105dp"
-                android:text="奶類"
-                android:textSize="34sp"
-                android:layout_gravity="center_horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.402"
-                app:strokeColor="#FFFCFC" />
-
-            <Button
-                android:id="@+id/btnJuice"
-                android:layout_width="335dp"
-                android:layout_height="105dp"
-                android:text="果汁"
-                android:textSize="34sp"
-                android:layout_gravity="center_horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.806"
-                app:strokeColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/btnLimited"
-                android:layout_width="335dp"
-                android:layout_height="105dp"
-                android:text="季節限定"
-                android:textSize="34sp"
-                android:layout_gravity="center_horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.206"
-                app:strokeColor="#FFFFFF" />
-        </LinearLayout>
-
-    </ScrollView>
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/btm_nav"
+        android:id="@+id/nav_btm"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

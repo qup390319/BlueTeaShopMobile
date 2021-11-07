@@ -1,14 +1,21 @@
 package com.example.blueteashopmobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class MainActivity extends AppCompatActivity {
-    private Button btnTea,btnJuice,btnMilk,btnLimited;
+
 
 
 
@@ -16,47 +23,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnTea =(Button) findViewById(R.id.btnTea);
-        btnJuice =(Button) findViewById(R.id.btnJuice);
-        btnMilk =(Button) findViewById(R.id.btnMilk);
-        btnLimited =(Button) findViewById(R.id.btnLimited);
 
-        btnTea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentTea = new Intent();
-                intentTea.setClass(MainActivity.this ,OrderPageTea.class);
-                startActivity(intentTea);
+        BottomNavigationView nav_btm = findViewById(R.id.nav_btm);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_frg,new OrderFragment()).commit();
+
+        nav_btm.setOnItemSelectedListener(item -> {
+            Fragment selectFrg = null;
+            switch (item.getItemId()){
+                case R.id.nav_order:
+                    selectFrg = new OrderFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_frg,selectFrg).commit();
+                    Log.d("switch","Order");
+                    return true;
+                case R.id.nav_shopping_cart:
+                    selectFrg = new ShoppingCartFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_frg,selectFrg).commit();
+                    Log.d("switch","Shopping Cart");
+                    return true;
+                case R.id.nav_history:
+                    selectFrg = new HistoryFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_frg,selectFrg).commit();
+                    Log.d("switch","History");
+                    return true;
+                case R.id.nav_account:
+                    selectFrg = new AccountFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_frg,selectFrg).commit();
+                    Log.d("switch","Account");
+                    return true;
             }
-        });
 
-        btnJuice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentJuice = new Intent();
-                intentJuice.setClass(MainActivity.this ,OrderPageJuice.class);
-                startActivity(intentJuice);
-            }
-        });
 
-        btnMilk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentMilk = new Intent();
-                intentMilk.setClass(MainActivity.this ,OrderPageMilk.class);
-                startActivity(intentMilk);
-            }
+            return false;
         });
-
-        btnLimited.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentLimited = new Intent();
-                intentLimited.setClass(MainActivity.this ,OrderPageLimited.class);
-                startActivity(intentLimited);
-            }
-        });
-
 
     }
 
